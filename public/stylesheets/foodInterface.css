@@ -1,0 +1,32 @@
+.mainContainer{
+
+    background: #c7ecee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.subDiv{
+
+    border: 2px solid grey;
+    border-radius: 10px;
+    width: 60%;
+    height: auto;
+    background: #FFF;
+    padding: 10px;
+    margin-top: 7px;
+}
+
+.textHeading{
+
+    font-size: 26px;
+    font-weight: bold;
+    color: #00cec9;
+    letter-spacing: 2;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}

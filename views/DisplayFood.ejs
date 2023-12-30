@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+    <script src=" https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
+<script>
+  $(document).ready(function(){
+      $('.tooltipped').tooltip();
+    });
+</script>
+
+     <link href="/stylesheets/DisplayFood.css" rel="stylesheet">
+    </head>
+
+    <body>
+       <div class="mainContainer">
+        <div class="subDiv">
+          <div class="textHeading">
+            Food List
+            <a class="btn tooltipped" data-position="top" data-tooltip="Interface" href="/food/food"> <i class="material-icons prefix">person_add</i></a>
+          </div>
+            <table class="striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price/<br>Offer Price</th>
+                    <th>Type/<br>Status</th>
+                    <th>Picture</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.map((item)=>{ %>
+                <tr>
+                  <td><%= item.fooddetailid %></td>
+                  <td><%= item.foodtypename %></td>
+                  <td><%= item.foodname %></td>
+                  <td><%= item.description %></td>
+                  <td><%= item.price %>/<br><%= item.offerprice %></td>
+                  <td><%= item.type %>/<br><%= item.status %></td>
+                  <td><a href="/food/displayfoodpicture?fid=<%= item.fooddetailid %>&fname=<%= item.foodname %>&foodpicture=<%= item.picture %>"><img src="/images/<%= item.picture %>" width="30"></a></td>
+                  <td><a href="/food/displayrecordbyid?fid=<%= item.fooddetailid %>">Edit/Delete</a></td>
+                </tr>
+                <% }) %>
+            </tbody>
+            </table>
+        </div>
+       </div>
+    </body>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</html>

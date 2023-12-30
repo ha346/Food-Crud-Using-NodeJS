@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+    <script src=" https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
+    <script>
+        $(document).ready(function(){
+    $('select').formSelect();
+  });
+
+  $(document).ready(function(){
+      $('.tooltipped').tooltip();
+    });
+    </script>
+ <link href="/stylesheets/DisplayRecordById.css" rel="stylesheet">
+ <script src="/javascripts/Project.js"></script>
+    </head>
+
+    <body>
+        <form action="/food/editdeleterecord" method="post">
+            <input type="hidden" value="<%= data.fooddetailid %>" name="fooddetailid">
+        <div class="mainContainer">
+            <div class="subDiv">
+                <div class="textHeading">
+                  Food Update
+                 <a class="btn tooltipped" data-position="top" data-tooltip="Display Records" href="/food/displayrecord"><i class="material-icons prefix">contacts</i></a>
+                </div>
+            
+       <div class="row">
+        <div class="input-field col s6">
+            <select required name="foodtypeid" id="foodtype">
+             
+                <option value="<%= data.foodtypeid %>" ><%= data.foodtypename %></option>
+              
+              </select>
+              <label>Food Type</label>
+
+        </div>
+
+        <div class="input-field col s6">
+            <select required name="foodid" id="food">
+                 <option value="<%= data.foodid %>" ><%= data.foodname %></option>
+                 
+              </select>
+              <label>Food</label>
+
+        </div>
+       </div>
+
+       <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">comment</i>
+          <input required value="<%= data.description %>" id="description" type="text" class="validate" name="description">
+          <label for="description">Description</label>
+        </div>
+        </div>
+
+
+        <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">euro_symbol</i>
+              <input required value="<%= data.price %>" id="price" type="number" class="validate" name="price">
+              <label for="price">Price</label>
+            </div>
+
+            <div class="input-field col s6">
+                <i class="material-icons prefix">euro_symbol</i>
+                <input required value="<%= data.offerprice %>" id="offerprice" type="number" class="validate" name="offerprice">
+                <label for="offerprice">Offer Price</label>
+              </div>
+
+        </div>
+        <% var veg=data.type=='Veg'?'checked':''
+           var nonveg=data.type=='Non-Veg'?'checked':''
+        %>
+        <div class="row">
+            <div class="input-field col s6" style="display: flex;flex-direction:row ;  ">
+                <p style="display: flex;justify-content:flex-start;">
+                    <label>
+                      <input required class="with-gap" value="Veg" name="type" type="radio" <%= veg %> />
+                      <span>Veg</span>
+                    </label>
+                  </p>
+                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                  <p >
+                    <label >
+                      <input required class="with-gap" value="Non-Veg" name="type" type="radio" <%= nonveg %> />
+                      <span>Non-Veg</span>
+                    </label>
+                 </p>
+                  </div>
+                  
+                  <% var avl=data.status=='Available'?'checked':''
+                     var notavl=data.status=='Not Available'?'checked':''
+               %>
+            <div class="input-field col s6" style="display:flex;flex-direction: row;justify-content: space-around; ">
+                <p>
+                    <label>
+                      <input required class="with-gap" value="Available" name="status" type="radio" <%= avl %> />
+                      <span>Available</span>
+                    </label>
+                  </p>
+
+                  <p>
+                    <label>
+                      <input required class="with-gap" value="Not Available" name="status" type="radio" <%= notavl%> />
+                      <span>Not Available</span>
+                    </label>
+                  </p>
+                  </div>
+                   
+        </div>
+
+        
+
+        
+
+       <div class="row">
+        <div class="input-field col s6" style="display: flex;justify-content: center;">
+            <button class="btn waves-effect waves-light" type="submit" value="Edit" name="action">Edit
+                <i class="material-icons right">edit</i>
+              </button>
+        </div>
+
+        <div class="input-field col s6" style="display: flex;justify-content: center;">
+            <button class="btn waves-effect waves-light" type="submit" value="Delete" name="action">Delete
+                <i class="material-icons right">delete</i>
+              </button>
+        </div>
+       </div>
+
+
+    </div>
+</div>
+</form>
+    </body>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</html>
